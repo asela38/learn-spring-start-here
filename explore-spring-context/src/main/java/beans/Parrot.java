@@ -1,4 +1,4 @@
-package main;
+package beans;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -6,5 +6,5 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class Parrot {
-    private String name;
+    private String name = "Kiki";
 }
