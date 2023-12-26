@@ -7,12 +7,26 @@ import proxies.EmailCommentNotificationProxy;
 import repositories.DBCommentRepository;
 import services.CommentService;
 
+import java.util.Objects;
+
 public class Main {
     public static void main(String[] args) {
 
         var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
+        System.out.println("Main.main context created.");
         var commentService = context.getBean(CommentService.class);
+        System.out.println("Main.main comment service created");
         commentService.publishComment(getComment());
+
+        Object o = context.getBean("singletonObject", Object.class);
+        Object o1 = context.getBean("singletonObject", Object.class);
+        Object o2 = context.getBean("prototypeObject", Object.class);
+        Object o3 = context.getBean("prototypeObject", Object.class);
+
+        System.out.println("singletons o == o1 = " + (o == o1));
+        System.out.println("prototypes o2 == o3 = " + (o2 == o3));
+
+
     }
 
     private static void extracted() {
