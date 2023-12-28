@@ -8,7 +8,7 @@ import model.Payment;
 
 @FeignClient(name ="payment",
                 url="${name.service.url}")
-public interface PaymentProxy {
+public interface PaymentOpenFeignProxy {
 
     @PostMapping("/payment")
     Payment createPayment(

@@ -1,29 +1,26 @@
-package client.openfeign.controllers;
+package client.resttemplate.controllers;
 
-import client.openfeign.proxies.PaymentOpenFeignProxy;
-import lombok.extern.slf4j.Slf4j;
+import client.resttemplate.proxy.PaymentRestTemplateProxy;
 import model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
-
 @RestController
-@Slf4j
 public class PaymentsController {
-    private final PaymentOpenFeignProxy paymentProxy;
+
+    private final PaymentRestTemplateProxy proxy;
 
     @Autowired
-    public PaymentsController(PaymentOpenFeignProxy paymentProxy) {
-        this.paymentProxy = paymentProxy;
+    public PaymentsController(PaymentRestTemplateProxy proxy) {
+        this.proxy = proxy;
     }
 
     @PostMapping("/payment")
     public Payment createPayment(
             @RequestBody Payment payment
-    ) {
-        return paymentProxy.createPayment(UUID.randomUUID().toString(), payment);
+            ) {
+        return proxy.createPayment(payment);
     }
 }
