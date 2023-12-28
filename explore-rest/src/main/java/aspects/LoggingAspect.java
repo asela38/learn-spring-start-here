@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAspect {
 
-    @Pointcut("execution( * controllers.*.*(..))")
+    @Pointcut("execution( * server.controllers.*.*(..))")
     public void aroundControllerMethods(){}
 
     @Around("aroundControllerMethods()")

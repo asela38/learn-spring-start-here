@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAspects {
 
-    @Around("execution(* controllers.*.*(..))")
+    @Around("execution(* server.controllers.*.*(..))")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
       long start = System.currentTimeMillis();
         Object object = joinPoint.proceed();
